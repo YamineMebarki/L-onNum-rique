@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+{% block title %}Nos articles{% endblock %}
+{% block body %}
+    <div class="container">
+    <div class="row">
+    <div class="col-12">
+    <form action="" method="post" class="mt-4">
+        <div class="form-group">
+            <label for="search">Recherche</label>
+            <input type="text" name="search" class="form-control" id="search" value="" />
+        </div>
+        <div class="form-group">
+            <input type="submit" name="searchOk" class="btn btn-success" id="searchok" value="Rechercher" />
+        </div>
+    </form>
+    <h1 class="mt-3">Nos Articles,</h1>
+    <div>
+        <p>par categories :</p>
+        <a href="#developpeur" class="text-black-50">Developpeur</a> -
+        <a href="#linux" class="text-black-50">Linux</a> -
+        <a href="#android" class="text-black-50">Android</a> -
+        <a href="#windows" class="text-black-50">Windows</a>
+    </div>
+    <hr/>
+    <div class="mv">
+    {% if app.user %}
+        <section id="developpeur"  class="mt-5">
+            <h2  class="col-md-8">Article Developeur</h2>
+            {% for article in articles %}
+                {% if article.category.title == "developpeur" %}
+                    <a href="{{ path('show', {'id': article.id}) }}">
+                        <div class="mb-4 col-xs-2 col-sm-6 col-md-8">
+                            <div class="border border-dark rounded p-2 shadow">
+                                <img src="{{ article.image }}" class="card-img-top rounded" alt=""   height="200" />
+                                <div class="card-block">
+                                    <h4 class="card-title lien">{{ article.title }}</h4>
+                                    <a href="{{ path('article_like', {'id': article.id}) }}" class="btn btn-link js-likes">
+                                        {% if app.user and article.isLikedByUser(app.user) %}
+                                            <i class="fas fa-thumbs-up"></i>
+                                        {% else %}
+                                            <i class="far fa-thumbs-up"></i>
+                                        {% endif %}
+                                        <span class="js-likes">{{ article.articleLikes | length }}</span>
+                                        <span class="js-label">J'aime</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                {% endif %}
+            {% endfor %}
+        </section>
+        <section id="linux"  class="mt-5">
+            <h2 class="col-md-8">Article Linux</h2>
+            {% for article in articles %}
+                {% if article.category.title == "linux" %}
+                    <a href="{{ path('show', {'id': article.id}) }}">
+                        <div class="mb-3 col-xs-2 col-sm-6 col-md-8">
+                            <div class="border border-dark rounded p-2 shadow">
+                                <img src="{{ article.image }}" class="card-img-top rounded" alt="{{ article.title }}"   height="200" />
+                                <div class="card-block">
+                                    <h4 class="card-title lien">{{ article.title }}</h4>
+                                    <a href="{{ path('article_like', {'id': article.id}) }}" class="btn btn-link js-likes">
+                                        {% if app.user and article.isLikedByUser(app.user) %}
+                                            <i class="fas fa-thumbs-up"></i>
+                                        {% else %}
+                                            <i class="far fa-thumbs-up"></i>
+                                        {% endif %}
+                                        <span class="js-likes">{{ article.articleLikes | length }}</span>
+                                        <span class="js-label">J'aime</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                {% endif %}
+            {% endfor %}
+        </section>
+        <section  id="android"  class="mt-5">
+            <h2 class="col-md-8">Article Android</h2>
+            {% for article in articles %}
+                {% if article.category.title == "android" %}
+                    <a href="{{ path('show', {'id': article.id}) }}">
+                        <div class="mb-3 col-xs-2 col-sm-6 col-md-8">
+                            <div class="border border-dark rounded p-2 shadow">
+                                <img src="{{ article.image }}" class="card-img-top rounded" alt="{{ article.title }}"   height="200" />
+                                <div class="card-block">
+                                    <h4 class="card-title lien">{{ article.title }}</h4>
+                                    <a href="{{ path('article_like', {'id': article.id}) }}" class="btn btn-link js-likes">
+                                        {% if app.user and article.isLikedByUser(app.user) %}
+                                            <i class="fas fa-thumbs-up"></i>
+                                        {% else %}
+                                            <i class="far fa-thumbs-up"></i>
+                                        {% endif %}
+                                        <span class="js-likes">{{ article.articleLikes | length }}</span>
+                                        <span class="js-label">J'aime</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                {% endif %}
+            {% endfor %}
+        </section>
+        <section id="windows" class="mt-5">
+            <h2 class="col-md-8">Article Windows</h2>
+            {% for article in articles %}
+                {% if article.category.title == "windows" %}
+                    <a href="{{ path('show', {'id': article.id}) }}">
+                        <div class="mb-3 col-xs-2 col-sm-6 col-md-8">
+                            <div class="border border-dark rounded p-2 shadow">
+                                <img src="{{ article.image }}" class="card-img-top rounded" alt="{{ article.title }}"   height="200" />
+                                <div class="card-block">
+                                    <h4 class="card-title lien">{{ article.title }}</h4>
+                                    <a href="{{ path('article_like', {'id': article.id}) }}" class="btn btn-link js-likes">
+                                        {% if app.user and article.isLikedByUser(app.user) %}
+                                            <i class="fas fa-thumbs-up"></i>
+                                        {% else %}
+                                            <i class="far fa-thumbs-up"></i>
+                                        {% endif %}
+                                        <span class="js-likes">{{ article.articleLikes | length }}</span>
+                                        <span class="js-label">J'aime</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                {% endif %}
+            {% endfor %}
+        </section>
+        </div>
+        </div>
+        </div>
+        </div>
+    {% else %}
+        <h1 class="mt-5">Veuillez vous <a href="{{ path('security_login') }}">Connecter</a> ou vous <a href="{{ path('security_registration') }}">inscrire</a></h1>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,166 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+
+/* vendor/symfony/serializer/Mapping/Factory/ClassResolverTrait.php */
+class __TwigTemplate_d682bb3b640e4130aae02455fa3ac0dcaa5a242eb5c194567d6ee81d34fb8724 extends \Twig\Template
+{
+    private $source;
+    private $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->parent = false;
+
+        $this->blocks = [
+        ];
+    }
+
+    protected function doDisplay(array $context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "vendor/symfony/serializer/Mapping/Factory/ClassResolverTrait.php"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "vendor/symfony/serializer/Mapping/Factory/ClassResolverTrait.php"));
+
+        // line 1
+        echo "<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\\Component\\Serializer\\Mapping\\Factory;
+
+use Symfony\\Component\\Serializer\\Exception\\InvalidArgumentException;
+
+/**
+ * Resolves a class name.
+ *
+ * @internal
+ *
+ * @author Kévin Dunglas <dunglas@gmail.com>
+ */
+trait ClassResolverTrait
+{
+    /**
+     * Gets a class name for a given class or instance.
+     *
+     * @param object|string \$value
+     *
+     * @return string
+     *
+     * @throws InvalidArgumentException If the class does not exists
+     */
+    private function getClass(\$value)
+    {
+        if (\\is_string(\$value)) {
+            if (!class_exists(\$value) && !interface_exists(\$value, false)) {
+                throw new InvalidArgumentException(sprintf('The class or interface \"%s\" does not exist.', \$value));
+            }
+
+            return ltrim(\$value, '\\\\');
+        }
+
+        if (!\\is_object(\$value)) {
+            throw new InvalidArgumentException(sprintf('Cannot create metadata for non-objects. Got: \"%s\"', \\gettype(\$value)));
+        }
+
+        return \\get_class(\$value);
+    }
+}
+";
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+    }
+
+    public function getTemplateName()
+    {
+        return "vendor/symfony/serializer/Mapping/Factory/ClassResolverTrait.php";
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  43 => 1,);
+    }
+
+    public function getSourceContext()
+    {
+        return new Source("<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\\Component\\Serializer\\Mapping\\Factory;
+
+use Symfony\\Component\\Serializer\\Exception\\InvalidArgumentException;
+
+/**
+ * Resolves a class name.
+ *
+ * @internal
+ *
+ * @author Kévin Dunglas <dunglas@gmail.com>
+ */
+trait ClassResolverTrait
+{
+    /**
+     * Gets a class name for a given class or instance.
+     *
+     * @param object|string \$value
+     *
+     * @return string
+     *
+     * @throws InvalidArgumentException If the class does not exists
+     */
+    private function getClass(\$value)
+    {
+        if (\\is_string(\$value)) {
+            if (!class_exists(\$value) && !interface_exists(\$value, false)) {
+                throw new InvalidArgumentException(sprintf('The class or interface \"%s\" does not exist.', \$value));
+            }
+
+            return ltrim(\$value, '\\\\');
+        }
+
+        if (!\\is_object(\$value)) {
+            throw new InvalidArgumentException(sprintf('Cannot create metadata for non-objects. Got: \"%s\"', \\gettype(\$value)));
+        }
+
+        return \\get_class(\$value);
+    }
+}
+", "vendor/symfony/serializer/Mapping/Factory/ClassResolverTrait.php", "/var/www/public/DevLaon/templates/vendor/symfony/serializer/Mapping/Factory/ClassResolverTrait.php");
+    }
+}

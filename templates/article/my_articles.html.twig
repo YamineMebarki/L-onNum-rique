@@ -1,0 +1,47 @@
+{% extends  'base.html.twig' %}
+{% block title %}Articles de {{ user.username }} {% endblock %}
+{% block body %}
+    {% if app.user %}
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Actuellement vous avez <span class="bold">{{ count }}</span>
+                        {% if count >1 %}
+                            articles publiés
+                        {% else %}
+                            article publié
+                        {% endif %}
+                    </h2>
+                    <div class="mv">
+                    {% for articles in articles %}
+                        <a href="{{ path('show', {'id': articles.id}) }}">
+                            <div class="mb-4 col-xs-2 col-sm-6 col-md-8">
+                            <div class="border border-dark rounded p-2 shadow">
+                                    <img src="{{ articles.image }}" class="card-img-top rounded" alt="{{ articles.title }}"   height="200" />
+                                    <div class="card-block">
+                                        <h4 class="card-title">{{ articles.title }}</h4>
+                                        <a href="{{ path('article_like', {'id': articles.id}) }}" class="btn btn-link js-likes">
+                                            {% if app.user and articles.isLikedByUser(app.user) %}
+                                                <i class="fas fa-thumbs-up"></i>
+                                            {% else %}
+                                                <i class="far fa-thumbs-up"></i>
+                                            {% endif %}
+                                            <span class="js-likes">{{ articles.articleLikes | length }}</span>
+                                            <span class="js-label">J'aime</span>
+                                        </a>
+                                        <a href="{{ path('delete_article', {'id':articles.id}) }}">
+                                            <button class="btn btn-danger">X</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <h1 class="mt-5">Veuillez vous <a href="{{ path('security_login') }}">Connecter</a> ou vous <a href="{{ path('security_registration') }}">inscrire</a></h1>
+    {% endif %}
+{% endblock %}

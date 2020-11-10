@@ -1,0 +1,160 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+
+/* vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Driver.php */
+class __TwigTemplate_fcac17b216d8e0ce814d06216b41d464a487b6c33bd9461cad6ec895ff59a4a4 extends \Twig\Template
+{
+    private $source;
+    private $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->parent = false;
+
+        $this->blocks = [
+        ];
+    }
+
+    protected function doDisplay(array $context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Driver.php"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Driver.php"));
+
+        // line 1
+        echo "<?php
+
+namespace Doctrine\\DBAL\\Driver\\IBMDB2;
+
+use Doctrine\\DBAL\\Driver\\AbstractDB2Driver;
+
+/**
+ * IBM DB2 Driver.
+ */
+class DB2Driver extends AbstractDB2Driver
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function connect(array \$params, \$username = null, \$password = null, array \$driverOptions = [])
+    {
+        if (! isset(\$params['protocol'])) {
+            \$params['protocol'] = 'TCPIP';
+        }
+
+        if (\$params['host'] !== 'localhost' && \$params['host'] !== '127.0.0.1') {
+            // if the host isn't localhost, use extended connection params
+            \$params['dbname'] = 'DRIVER={IBM DB2 ODBC DRIVER}' .
+                     ';DATABASE=' . \$params['dbname'] .
+                     ';HOSTNAME=' . \$params['host'] .
+                     ';PROTOCOL=' . \$params['protocol'] .
+                     ';UID=' . \$username .
+                     ';PWD=' . \$password . ';';
+            if (isset(\$params['port'])) {
+                \$params['dbname'] .= 'PORT=' . \$params['port'];
+            }
+
+            \$username = null;
+            \$password = null;
+        }
+
+        return new DB2Connection(\$params, \$username, \$password, \$driverOptions);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return 'ibm_db2';
+    }
+}
+";
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+    }
+
+    public function getTemplateName()
+    {
+        return "vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Driver.php";
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  43 => 1,);
+    }
+
+    public function getSourceContext()
+    {
+        return new Source("<?php
+
+namespace Doctrine\\DBAL\\Driver\\IBMDB2;
+
+use Doctrine\\DBAL\\Driver\\AbstractDB2Driver;
+
+/**
+ * IBM DB2 Driver.
+ */
+class DB2Driver extends AbstractDB2Driver
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function connect(array \$params, \$username = null, \$password = null, array \$driverOptions = [])
+    {
+        if (! isset(\$params['protocol'])) {
+            \$params['protocol'] = 'TCPIP';
+        }
+
+        if (\$params['host'] !== 'localhost' && \$params['host'] !== '127.0.0.1') {
+            // if the host isn't localhost, use extended connection params
+            \$params['dbname'] = 'DRIVER={IBM DB2 ODBC DRIVER}' .
+                     ';DATABASE=' . \$params['dbname'] .
+                     ';HOSTNAME=' . \$params['host'] .
+                     ';PROTOCOL=' . \$params['protocol'] .
+                     ';UID=' . \$username .
+                     ';PWD=' . \$password . ';';
+            if (isset(\$params['port'])) {
+                \$params['dbname'] .= 'PORT=' . \$params['port'];
+            }
+
+            \$username = null;
+            \$password = null;
+        }
+
+        return new DB2Connection(\$params, \$username, \$password, \$driverOptions);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return 'ibm_db2';
+    }
+}
+", "vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Driver.php", "/var/www/public/DevLaon/templates/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Driver.php");
+    }
+}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+    {% if app.user and app.user.role == 'admin' %}
+        <div class="col-xl-4 offset-xl-4 col-lg-7 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-xs-12">
+            <table class="table-responsive text-center table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for users in users  %}
+                    <tr>
+                        <th scope="row">{{ users.id }}</th>
+                        <td><a href="{{ path('show_user', {"id": users.id}) }}">{{ users.username }}</a></td>
+                        <td>{{ users.age }}</td>
+                        <td><a href="{{ path('contact_user', {'id': users.id}) }}">{{ users.email }}</a></td>
+                        <td>{{ users.role }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}

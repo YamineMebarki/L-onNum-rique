@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="mb-4">
+    <h1 class="text-success mt-5">{{ user.username }} votre commentaire à bien été supprimer</h1>
+    <a href="{{ path('home') }}">
+        <button class="btn btn-success mt-5">Accueil</button>
+    </a>
+    </div>
+{% endblock %}

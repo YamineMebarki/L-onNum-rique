@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+{% form_theme formComment 'bootstrap_4_layout.html.twig' %}
+{% block title %}
+    {% if app.user %}
+        {{ article.title }}
+    {% else %}
+        L@nNumérique
+    {% endif %}
+{% endblock %}
+{% block body %}
+{% if app.user %}
+    <div class="col-2">
+        <a href="{{ path("articles") }}"><button class="btn btn-warning">Nos articles</button></a>
+    </div>
+{% else %}
+    <p class="bold">Pour pouvoir consulter plus d'article veuillez vous <a href="{{ path('security_registration') }}">inscrire</a> ou vous <a href="{{ path('security_login') }}">connecter.</a></p>
+{% endif %}
+<hr/>
+<div>
+    <h1 class="bold"> {{ article.title }} </h1>
+    <img src="{{ article.image }}" alt="{{ article.name }}" class="rounded responsive">
+    <div class="row">
+        <div CLASS="container">
+            <div class="col-12">
+                <p class="font">{{ article.content | raw }}</p>
+            </div>
+        </div>
+    </div>
+    <p>Détails :</p>
+    <p class="metadata">Écrit le {{ article.createAt | date('d/m/Y') }} à {{ article.createAt | date('H:i') }}</p>
+    <p>dans la categorie {{ article.category.title }} par {{ article.name }}</p>
+    {% if app.user %}
+        {% if app.user.username == article.name %}
+            <div class="col-4 mt-2">
+                <a href="{{ path('edit', {'id':article.id}) }}"><button class="btn btn-primary">Modifier</button></a>
+            </div>
+        {% else %}
+        {% endif %}
+    {% else %}
+    {% endif %}
+</div>
+<hr/>
+{% if app.user %}
+    <h3 class="mt-2">Laisser un commentaire</h3>
+    {{ form_start(formComment) }}
+    {{ form_row(formComment.content, {'label': 'Votre commentaire'}) }}
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+    {{ form_end(formComment) }}
+{% else %}
+    <small>Pour pouvoir réagir ou laisser un commentaire veuillez vous <a href="{{ path('security_login') }}">connecter</a> ou vous <a href="{{ path('security_registration') }}">inscrire</a> gratuitement.</small>
+{% endif %}
+<hr/>
+<div class="center">
+    <p class="font">Patager cet article sur votre profil Facebook</p>
+    <div class="fb-share-button" data-href="http://laon-numérique.fr/article/{{ article.id }}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxn--laon-numérique-ihb.fr%2Farticle%2F{{ article.id }}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Partager</a></div>
+    <a href="{{ path('article_like', {'id': article.id}) }}" class="btn btn-link js-likes">
+            {% if app.user and article.isLikedByUser(app.user) %}
+                <i class="fas fa-thumbs-up"></i>
+            {% else %}
+                <i class="far fa-thumbs-up"></i>
+            {% endif %}
+            <span class="js-likes">{{ article.articleLikes | length }}</span>
+            <span class="js-label">J'aime</span>
+        </a>
+        <hr/>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <section id="commentaires">
+                        {% for comment in article.comments %}
+                            <div class="comment">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h4>Détails</h4>
+                                        {{ comment.author }}
+                                        <p>(<small>écrit le {{ article.createAt| date('d/m/y') }} à {{ comment.createdAt| date('H:i') }} </small>)</p>
+                                    </div>
+                                    <div class="col">
+                                        <h4>Commentaire :</h4>
+                                        {{ comment.content | raw }}
+                                    </div>
+                                    {% if app.user.role == 'admin' %}
+                                        <a href="{{ path('delete_comment', {'id': comment.id }) }}">
+                                            <button class="btn btn-danger">supprimer</button>
+                                        </a>
+                                    {% else %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <hr/>
+                        {% endfor %}
+                    </section>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div id="fb-root"></div>
+    {% endblock %}
+{% block javascripts %}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v5.0"></script>
+    {% endblock %}
